@@ -1,0 +1,121 @@
+\documentclass[12pt,letterpaper,titlepage,onecolumn,twoside,openright]{book}
+%\documentclass[12pt,letterpaper,titlepage,onecolumn,twoside,openright,draft]{book}
+
+% Remove the draft option in order to make the final version of the document
+
+\usepackage{DM_Styles}
+
+% You will see the label just next or above the relevant number in the compiled version.
+% Just before the final version, remove it
+%\usepackage{showkeys}
+%\usepackage{showframe}
+
+% The default font set to sans serif (easy readable)
+%\renewcommand*{\familydefault}{\sfdefault}
+
+
+% Document class options
+% 10pt, 11pt, 12pt 	Sets the size of the main font in the document
+% a4paper, letterpaper,... Defines the paper size, besides that, a5paper, b5paper, executivepaper, and legalpaper can be specified.
+% fleqn 	Typesets displayed formulas left-aligned instead of centered.
+% leqno 	Places the numbering of formulas on the left hand side instead of the right.
+% titlepage, notitlepage 	Specifies whether a new page should be started after the document title or not.
+% onecolumn, twocolumn 	Instructs LaTeX to typeset the document in one column or two columns.
+% twoside, oneside 	Specifies whether double or single sided output should be generated. The option twoside does not tell the printer you use that it should actually make a two-sided printout.
+% landscape 	Changes the layout of the document to print in landscape mode.
+% openright, openany 	Makes chapters begin either only on right hand pages or on the next page available.
+% draft 	makes LaTeX indicate hyphenation and justification problems with a small square in the right-hand margin of the problem line so they can be located quickly by a human. It also suppresses the inclusion of images and shows only a frame where they would normally occur.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                     MAIN DOCUMENT                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{titlepage}
+% You can put all of this on a sepparated file and addit by means of
+% 
+% \begin{document}
+% 
+%  \input{./title.tex} % This gets the latex code from an external source
+%  ...
+% \end{document}
+% 
+%  So you can work with the title in a single file and dont need to recompile
+% the whole document
+
+
+%%% STANDARD TITLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\Huge \scshape \textbf{Sample document showing the use of LatexProjectMakefile} \vspace{1cm} }
+\author{ {\large Daniel Mej\'ia Raigosa
+  %\thanks{danielmejia55@gmail.com}
+} \\ \vspace{1cm} \\ University of Antioquia}
+%\date{ \large \today } % actual date
+\date{}
+
+
+
+%%% HERE THE MAGIC BEGINS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makenomenclature
+
+
+\begin{document}
+\pagestyle{empty}
+\frontmatter
+\maketitle % if the title is created above
+%\include{title-page} % if the title is stored on a sepparated file
+
+\pagestyle{plain}
+\tableofcontents
+
+\cleardoublepage 
+\addcontentsline{toc}{chapter}{\nomname}
+\printnomenclature
+\cleardoublepage 
+
+\cleardoublepage 
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+\cleardoublepage 
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+\cleardoublepage 
+
+%\include{chapters/list-of-symbols}
+\input{chapters/list-of-symbols}
+
+\mainmatter
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+%Change header and footer of any page of the document. See DM_Thesis for fancyhdr package
+
+\newcommand{\changefont}{%
+      \fontsize{8}{9}\selectfont
+	}
+\pagestyle{fancy}
+% First you need to clear the default layout:
+\fancyhf{}
+\fancyfoot[CE,CO]{\thepage}
+\fancyhead[LE]{\changefont \slshape \leftmark}
+\fancyhead[RO]{\changefont \slshape \rightmark}
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+
+
+\include{chapters/introduction}
+\include{chapters/chapter-1}
+\include{chapters/complex_chapter}
+\include{chapters/ch-appendices}
+
+
+\addcontentsline{toc}{chapter}{References}
+\renewcommand\bibname{References}
+\bibliographystyle{apa}
+\bibliography{references/references}{}
+
+\end{document}

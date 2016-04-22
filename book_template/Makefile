@@ -8,10 +8,10 @@
 ################################
 
 # Name of the main tex file without extension
-PROJECT = undergrad-thesis-daniel
+PROJECT = sample_book
 
 # Style file or list of files
-STYFILE = DM_Thesis.sty
+STYFILE = DM_Styles.sty
 
 ## Directories to search for sources
 

@@ -1,9 +1,9 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%                                          %%%
-%%%  DM Thesis version 3.2  -  August 2015   %%%
-%%%                                          %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ProvidesPackage{DM_Thesis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                  %%%
+%%%  DM Thesis version 3.2  -  2016  %%%
+%%%                                  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{DM_Styles}
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
 % You will see the label just next or above the relevant number in the compiled version.
@@ -11,9 +11,16 @@
 %\usepackage{showkeys} 
 
 % the default font set to sans serif (easy readable)
-\renewcommand*{\familydefault}{\sfdefault}
+%\renewcommand*{\familydefault}{\sfdefault}
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% To create the list of symbols used
+\usepackage{nomencl}
+\renewcommand{\nomname}{List of symbols and abreviations}
+
 % Definition environment 
 \newtheorem{definition}{Definition}
+
 % Remark environment
 \newenvironment{remark}{\noindent\textbf{Remark}\newline\noindent}{\newline}
 \newenvironment{remarks}{\noindent\textbf{Remarks}\begin{itemize}}{\end{itemize}}
@@ -309,8 +316,6 @@
 \setbondstyle{line width = \bondwidth}
 
 
-
-
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
 %%% math related packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -345,9 +350,6 @@
 \usepackage{upgreek} 
 
 
-
-
-
 %%% other general packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -355,11 +357,6 @@
 % bibliography related, use natbib as bibtex engine
 \usepackage{natbib}
 
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% To create the list of symbols used
-\usepackage{nomencl}
-\renewcommand{\nomname}{List of symbols and abreviations}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -394,50 +391,8 @@
 
 
 \newcommand{\tableHead}{\hline}
-%\newcommand{\tableTopLine}{\hline \hline}
 \newcommand{\tableTopLine}{\hline}
 \newcommand{\tableBottomLine}{\hline \hline}
-
-\newcommand{\ca}{$\displaystyle{\text{Ca}^{2+}}$ }
-\newcommand{\mg}{$\displaystyle{\text{Mg}^{2+}}$ }
-\newcommand{\cac}{$\displaystyle{\left[\text{Ca}^{2+}\right]}$ }
-\newcommand{\mgc}{$\displaystyle{\left[\text{Mg}^{2+}\right]}$ }
-
-\newcommand{\cair}{$\displaystyle{\left[\text{Ca}^{2+}\right]_{\text{iR}}}$ }
-\newcommand{\caire}{\left[\text{Ca}^{2+}\right]_{\text{iR}} }
-
-\newcommand{\magfluo}{Mag-Fluo-4 }
-\newcommand{\magfluoec}{\left[  \text{Mag-Fluo-4} \right] }
-
-\newcommand{\kon}{$k_{\text{on}}$ }
-\newcommand{\koff}{$k_{\text{off}}$ }
-\newcommand{\kone}{k_{\text{on}} }
-\newcommand{\koffe}{k_{\text{off}} }
-
-\newcommand{\keon}{$k_{1}$ }
-\newcommand{\keoff}{$k_{-1}$ }
-\newcommand{\kepp}{$k_{2}$ }
-
-\newcommand{\keone}{k_{1}}
-\newcommand{\keoffe}{k_{-1}}
-\newcommand{\keppe}{k_{2}}
-
-\newcommand{\kdd}{$K_{D}$ }
-\newcommand{\kdde}{K_{D} }
-
-\newcommand{\cae}{\text{Ca}^{2+}}
-\newcommand{\mge}{\text{Mg}^{2+}}
-
-\newcommand{\caec}{\left[\text{Ca}^{2+}\right]}
-\newcommand{\mgec}{\left[\text{Mg}^{2+}\right]}
-
-\newcommand{\FMm}{F_{\text{Max}}}
-\newcommand{\Fmm}{F_{\text{min}}}
-\newcommand{\Frr}{F_{\text{rest}}}
-
-\newcommand{\FMmec}{$F_{\text{Max}}\,$}
-\newcommand{\Fmmec}{$F_{\text{min}}\,$}
-\newcommand{\Frrec}{$F_{\text{rest}}\,$}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -492,53 +447,4 @@
 % position vector
 \newcommand{\rr}{\vec{r}}
 \newcommand{\rrtt}{\left( \vec{r},t \right)}
-%\newcommand{\rre}{$\vec{r}\,$}
-%\newcommand{\rrtte}{$\left( \vec{r},t \right)\,$}
 
-%%
-%% Comands for FD schemes
-%%
-
-\newcommand{\Omegad}{\widetilde{\Omega}}
-\newcommand{\Omegat}{\overline{\Omega}_{t}}
-
-\newcommand{\ddt}{\delta t}
-\newcommand{\ddxx}{\delta x}
-\newcommand{\ddx}[1]{\delta x_{#1}}
-
-\newcommand{\xx}{\left( x_{1},x_{2},\ldots,x_{N},t \right)}
-\newcommand{\ffbf}{f\rrtt}
-
-\newcommand{\fij}{f_{i,j}}
-\newcommand{\fijl}{f_{i,j,l}}
-
-\newcommand{\fiii}{f_{i+1,j}}
-\newcommand{\fjjj}{f_{i,j+1}}
-\newcommand{\fii}{f_{i-1,j}}
-\newcommand{\fjj}{f_{i,j-1}}
-
-\newcommand{\ffiii}{f_{i+1,j,l}}
-\newcommand{\ffjjj}{f_{i,j+1,l}}
-\newcommand{\fflll}{f_{i,j,l+1}}
-\newcommand{\ffii}{f_{i-1,j,l}}
-\newcommand{\ffjj}{f_{i,j-1,l}}
-\newcommand{\ffll}{f_{i,j,l-1}}
-
-%\newcommand{\ddte}{$\delta t \,$}
-%\newcommand{\ddxxe}{$\delta x \,$}
-%\newcommand{\ddxe}[1]{$\delta x_{#1}\,$}
-%
-%\newcommand{\xxe}{$\left( x_{1},x_{2},\ldots,x_{N},t \right)\,$}
-%\newcommand{\ffbfe}{$f\rrtt\,$}
-%
-%\newcommand{\fiiie}{$f_{i+1,j}\,$}
-%\newcommand{\fjjje}{$f_{i,j+1}\,$}
-%\newcommand{\fiie}{$f_{i-1,j}\,$}
-%\newcommand{\fjje}{$f_{i,j-1}\,$}
-%
-%\newcommand{\ffiiie}{$f_{i+1,j,l}\,$}
-%\newcommand{\ffjjje}{$f_{i,j+1,l}\,$}
-%\newcommand{\ffllle}{$f_{i,j,l+1}\,$}
-%\newcommand{\ffiie}{$f_{i-1,j,l}\,$}
-%\newcommand{\ffjje}{$f_{i,j-1,l}\,$}
-%\newcommand{\fflle}{$f_{i,j,l-1}\,$}

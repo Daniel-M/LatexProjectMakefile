@@ -8,7 +8,7 @@
 ################################
 
 # Name of the main tex file without extension
-PROJECT = sample_document 
+PROJECT = sample_article
 
 # Style file or list of files
 STYFILE = DM_Styles.sty
@@ -72,6 +72,7 @@ CLEANEQS = grep -lr --include=*.tex '<++>' ./ | xargs sed -i 's/<++>//g'
 ## DEFINING TARGETS OPERATIONS
 ##############################
 
+#all: $(PROJECT).pdf
 all: bibliography
 
 $(PROJECT).pdf: $(TARGETS)
