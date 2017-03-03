@@ -8,10 +8,11 @@
 ################################
 
 # Name of the main tex file without extension
-PROJECT = sample_document 
+PROJECT = beamer_template 
 
 # Style file or list of files
-STYFILE = DM_Styles.sty
+#STYFILE = DM_BeamerStylesXetex.sty
+STYFILE = DM_BeamerStyles.sty
 
 ## Directories to search for sources
 

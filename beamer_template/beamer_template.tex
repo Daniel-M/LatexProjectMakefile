@@ -1,0 +1,158 @@
+\documentclass[11.5pt,letterpaper]{beamer} 
+
+% Document class options
+% 10pt, 11pt, 12pt 	Sets the size of the main font in the document
+% a4paper, letterpaper,... Defines the paper size, besides that, a5paper, b5paper, executivepaper, and legalpaper can be specified.
+% fleqn 	Typesets displayed formulas left-aligned instead of centered.
+% leqno 	Places the numbering of formulas on the left hand side instead of the right.
+% titlepage, notitlepage 	Specifies whether a new page should be started after the document title or not.
+% onecolumn, twocolumn 	Instructs LaTeX to typeset the document in one column or two columns.
+% twoside, oneside 	Specifies whether double or single sided output should be generated. The option twoside does not tell the printer you use that it should actually make a two-sided printout.
+% landscape 	Changes the layout of the document to print in landscape mode.
+% openright, openany 	Makes chapters begin either only on right hand pages or on the next page available.
+% draft 	makes LaTeX indicate hyphenation and justification problems with a small square in the right-hand margin of the problem line so they can be located quickly by a human. It also suppresses the inclusion of images and shows only a frame where they would normally occur.
+
+% NOTES ON COMPILING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% if you want pdflatex features along with a small output file size, you can use the Ghostscript command:
+% gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="Compressed.pdf" "Original.pdf"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                     ADDING PACKAGES                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{DM_BeamerStyles} % Remember to comment out the fancy header packages otherwise the theme wont work
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                    BEAMER SETTING UP                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+ %\usetheme{Berkeley}   % Tema de la presentacion, define la apariencia de la misma,  puede cambiarse para cambiar los esquemas
+ %\usetheme{PaloAlto}
+\usetheme{Madrid}
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% \usecolortheme{seagull}  % tema de colores se llama seagull
+% \usecolortheme{rose}       % tema de colores se llama rose
+% \usecolortheme{dolphin}  % tema de colores se llama rose
+
+% Green Colors
+% \usecolortheme[RGB={0,100,0}]{structure} % Not Bad
+\usecolortheme[RGB={85,107,47}]{structure} % I Like it
+
+
+% % Fondo de las diapositivias 
+% \usebackgroundtemplate{
+% \includegraphics[width=\paperwidth,
+% height=\paperheight]{Imagenes/Slides_background.jpg}
+% }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                     MAIN DOCUMENT                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title[Titulo-pie]{Titulo \newline {\small Subtitulo(opcional)  } }
+% \subtitle{Reporte de Resultados}
+\author[autor-pie]{Autor}
+\institute[e-mail-pie]{Afiliacion y dem\'as items separados por vspace{} y newline}
+\date{mes,a\~no}
+
+
+% Fondo de las diapositivas 
+% Para colocarle un fondo peronalizado a las diapositivas, la ruta a la imagen debe ser completa siempre y cuando la imagen
+% no este en la misma carpeta que el archivo .tex
+
+% \usebackgroundtemplate{
+% \includegraphics[width=\paperwidth,height=\paperheight]{ruta_completa_imagen}
+% }
+
+
+\begin{document}  % Inicia el documento
+% If XeTeX is used
+% \setsansfont[Mapping=tex-text]{Linux Libertine Capitals O} % Uses <<Linux Libertine Capitals O>> on titles
+\maketitle  % comando para que se genere la diapositiva con el titulo
+
+
+% Diapositiva de contenido, se genera en funcion de la secciones que se van incluyendo
+
+% If XeTeX is used
+% \setsansfont[Mapping=tex-text]{Comfortaa} % Uses <<Comfortaa>> on titles
+
+\begin{frame}{Contenido}   % inicia una diapositiva con el titulo ``contenido''
+\begin{center}
+% Set deepth for the Table of Contents
+ \setcounter{tocdepth}{4} 
+ \tableofcontents
+\end{center}
+\end{frame}   % termina la diapositiva
+
+
+
+\section{seccion} % esta seccion aparecera en el contenido. con su respectivo nombre, las secciones y subsecciones etc...
+% se declaran fuera de los ``frame``
+
+% El equema general de una diapositiva es
+% \begin{frame}
+% \frametitle{titulo}
+% 	
+% 	Contenido de la diapositiva
+% 
+% \end{frame}
+% 
+
+
+% inclusion de imagenes en la diapositiva
+
+% \begin{frame}
+% \frametitle{Imagen}
+% 
+% \begin{center} % Centrar
+% \includegraphics[scale=1.05]{ruta_completa_imagen} %incluir graficos a una escala dada por ''scale`` y en la ruta
+% \end{center}
+% 
+% \end{frame}
+
+
+\begin{frame}
+\frametitle{Tablas en Diapositivas}
+
+\begin{center}
+
+ \normalfont Inclusion de tablas en las diapositivas
+
+\end{center}
+\begin{center}
+\begin{tabular}[c]{|c||c|c|} % | para lineas verticales, l,c,r para alineacion del texto
+
+\hline % Linea horizontal
+
+\hline \hline % 2 Linea horizontal
+Columna 1 & Columna 2 & $\sin(x) \text{ecuacion}$ \\ \hline % \\ Nueva linea y \hline para linea horizontal
+
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+% \end{document}
+
+
+\end{document}

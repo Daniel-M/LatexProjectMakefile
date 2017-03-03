@@ -1,52 +1,26 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%                                  %%%
-%%%  DM Styles version 3.5  -  2016  %%%
-%%%                                  %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                                    %%%
+%%%  DM Beamer Styles with Xetex version 3.5  -  2016  %%%
+%%%                                                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % NOTES ON COMPILING
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % if you want pdflatex features along with a small output file size, you can use the Ghostscript command:
 % gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="Compressed.pdf" "Original.pdf"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ProvidesPackage{DM_Styles}
+\ProvidesPackage{DM_BeamerStylesXetex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                     ADDING PACKAGES                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
 % You will see the label just next or above the relevant number in the compiled version.
 % Just before the final version, remove it
 %\usepackage{showkeys} 
 
-% the default font set to sans serif (easy readable)
-%\renewcommand*{\familydefault}{\sfdefault}
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% To create the list of symbols used
-\usepackage{nomencl}
-\renewcommand{\nomname}{List of symbols and abreviations}
-
-% Definition environment 
-\newtheorem{definition}{Definition}
-
-% Remark environment
-\newenvironment{remark}{\noindent\textbf{Remark}\newline\noindent}{\newline}
-\newenvironment{remarks}{\noindent\textbf{Remarks}\begin{itemize}}{\end{itemize}}
-
-% Needed for the custom title. Remove if not used.
-%\usepackage[charter]{mathdesign}
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Language definition and hypenation setup  %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage[spanish]{babel}
-\usepackage[spanish,english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-%\usepackage{hyphenation}
-
-
-\usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{float} % this enables the ``H'' option to force figures to stay at the place where they where declared
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Section numbering depth for Table of Contents %%
@@ -64,143 +38,136 @@
 %% Page margins and document layout of pages %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Shows the document frames
-%\usepackage{showframe}
+% Discriminates if compiling a PDF or a DVI
+\usepackage{ifpdf} 
+\ifpdf
+   % put here packages only for the PDF:
+   \DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
+   % it gives LaTeX the possibility to manage links within the document or to any URL when you compile in PDF. 
+   \usepackage{hyperref} 
+\else
+   % put here packages only for the DVI:
+\fi
 
-% Creates a page with layout definitions when \layout{} is invoqued 
-\usepackage{layout}
-
-% custom margins modified by package
-\usepackage{geometry}
-\geometry{
-  letterpaper,
-  left=3.5cm,
-  right=2cm,
-  top=2.5cm,
-  bottom=2cm,
-}
-
+ 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Rotate tables to landscape mode in text %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This package requires the use of package `geometry`
-\usepackage{pdflscape}
-% An example of usage is
-%\newgeometry{margin=1cm} % modify this if you need even more space
-%\begin{landscape}
+% Discriminates Font properties if using XeTeX or LaTeX
+\usepackage{ifxetex}
+ 
+\ifxetex
 
-  %put your table here
+  \usepackage{fontspec}   
 
-%\end{landscape}
-%\restoregeometry
+  \usepackage{fontspec}
+  \usepackage{xunicode} %Unicode extras!
+  \usepackage{xltxtra}  %Fixes
 
-
-
+  %−−−−−−−−−−−Font defenitions for Xetex
+  \defaultfontfeatures{Scale = MatchLowercase } % to adjust the same x−heigt => Harmonization
+  
+  
+  % Defines the standart letter chosen from system installed letters. uses TrueTypeFonts (TTF) or Open Type Fonts (OTF)
+  
+  \setmainfont[Mapping = tex − text ] {Comfortaa}
+  \setromanfont[Mapping=tex-text]{Comfortaa} % Uses <<Comfortaa>> font as main font of the text
+  \setsansfont[Mapping=tex-text]{Linux Libertine Capitals O} % Uses <<Linux Libertine Capitals O>> on titles
+  \setmonofont[Mapping=tex-text]{Comfortaa} % Uses <<Comfortaa>> as monospaced, i.e. sourced text
+   
+  %%−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+  
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Sets the leghts on tables and arrays %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{array}
-
-%%
-%% Adding multiple rows in latex tables
-%% -----------------------------
-%% | this       | is | a table |
-%% -----------------------------
-%% | this spans | 1  | 3	   |
-%% -            ----------------
-%% | two rows   | 2  | 4	   |
-%% -----------------------------
-%% | one row    | 5  | 6	   |
-%% -----------------------------
-%%
-\usepackage{multirow}
-
-
+% If XeTeX is used To make a distinction between font of title of slide and the font of slide Contents
+  \newcommand{\newframe}[2]
+  {
+    \setsansfont[Mapping=tex-text]{Linux Libertine Capitals O}
+    
+    \begin{frame}{#1}
+      \begin{center}
+	\setsansfont[Mapping=tex-text]{Comfortaa}
+	#2
+      \end{center}
+    \end{frame}
+  }
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-\usepackage{fancyhdr} % to change header and footer of any page of the document.
+  
+  
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc} % Vector scalable fonts of type 1 (T1)
+  
+ %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% If XeTeX is Not used
+  \newcommand{\newframe}[2]
+  {
+       
+    \begin{frame}{#1}
+     \begin{center}
+	#2
+     \end{center}
+    \end{frame}
+  }
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+  
+\fi
 
-%\newcommand{\changefont}{%
-%      \fontsize{8}{9}\selectfont
-%	}
-%\pagestyle{fancy}
-%% First you need to clear the default layout:
-%\fancyhf{}
-%\fancyfoot[CE,CO]{\thepage}
-%\fancyhead[LE]{\changefont \slshape \leftmark}
-%\fancyhead[RO]{\changefont \slshape \rightmark}
-%
-% habilitar estilo, opciones <<plain>>,<<fancy>> <<headings>>
-%\pagestyle{fancy}
-% First you need to clear the default layout:
-%\fancyhf{}
-%\fancyfoot[LE,RO]{\thepage}
-%\fancyhead[CE]{\leftmark}
-%\fancyhead[CO]{\rightmark}
-% 
-% There are seven letters you need to know before you can define your own header/footer:
-% 
-% E: Even page
-% O: Odd page
-% L: Left field
-% C: Center field
-% R: Right field
-% H: Header
-% F: Footer
-% 
-% Now it’s time to start defining your own layout. The definitions are added to the preamble:
-% 
-% 1	\fancyhead[CO,CE]{---Draft---}
-% 2	\fancyfoot[C]{Confidential}
-% 3	\fancyfoot[RO, LE] {\thepage}
-% 
-% The decorative lines can be changed by increasing/decreasing their thickness (0pt means no line):
-% 
-% 1	\renewcommand{\headrulewidth}{0.4pt}
-% 2	\renewcommand{\footrulewidth}{0.4pt}
 
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-\usepackage{listings} % source code on the text
+% The "root" and "child" document can be compiled at the same time without making changes to the "child" document.
+\usepackage{subfiles} 
+
+
+
+
+
+%%% DOCUMENT STYLE PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% it provides the internationalization of LaTeX
+\usepackage[spanish,english]{babel} 
+
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+\usepackage{listings} % Source code on the text
 \usepackage{color}  % it adds support for colored text.
  
 % \definecolor{dkgreen}{rgb}{0,0.6,0}
 % \definecolor{gray}{rgb}{0.5,0.5,0.5}
 % \definecolor{mauve}{rgb}{0.58,0,0.82}
 % 
-% usage of listings and color
+% Usage of listings and color
 
 % \begin{lstlisting}
 % put your code here
 % \end{lstlisting}
 % 
-% another possibility,  is to import the code from the source itself. 
-% this way, if you modify the source, you just have to recompile 
-% the latex code and your document will be updated.
+% Another possibility,  is to import the code from the source itself. 
+% This way, if you modify the source, you just have to recompile 
+% the LaTeX code and your document will be updated.
 % 
 % \lstinputlisting{source_filename.py}
 % 
-% in the example there is a python source, but it doesn't matter: 
+% in the example there is a Python source, but it doesn't matter: 
 % you can include any file but you have to write the full file name. 
-% it will be considered plain text and it will be highlighted according to
+% It will be considered plain text and it will be highlighted according to
 % your settings, that means it doesn't recognize the programming language by itself.
-% you can specify the language while including the file with the following command:
+% You can specify the language while including the file with the following command:
 % 
-% \lstinputlisting[language=python]{source_filename.py}
+% \lstinputlisting[language=Python]{source_filename.py}
 
-%  you can modify some style by doing the deffinitions
+%  You can modify some style by doing the deffinitions
 
 % \lstset{ %
-%   language=octave,                % the language of the code
+%   language=Octave,                % the language of the code
 %   basicstyle=\footnotesize,           % the size of the fonts that are used for the code
 %   numbers=left,                   % where to put the line-numbers
 %   numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
-%   stepnumber=2,                   % the step between two line-numbers. if it's 1, each line 
+%   stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
 %                                   % will be numbered
 %   numbersep=5pt,                  % how far the line-numbers are from the code
-%   backgroundcolor=\color{white},      % choose the background color. you must add \usepackage{color}
+%   backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
 %   showspaces=false,               % show spaces adding particular underscores
 %   showstringspaces=false,         % underline spaces within strings
 %   showtabs=false,                 % show tabs within strings adding particular underscores
@@ -215,47 +182,65 @@
 %   keywordstyle=\color{blue},          % keyword style
 %   commentstyle=\color{dkgreen},       % comment style
 %   stringstyle=\color{mauve},         % string literal style
-%   escapeinside={\%*}{*)},            % if you want to add latex within your code
+%   escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
 %   morekeywords={*,...}               % if you want to add more keywords to the set
 % }
+ 
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% provides extra symbols, e.g. arrows like \textrightarrow, various currencies (\texteuro,...), things like \textcelsius and many other
+% Fills text
+\usepackage{lipsum}
+%  Multiple columns
+\usepackage{multicol}
+% % Usage 
+% 
+% \begin{multicols}{ number of columns }
+% 
+% % these lines are optional and function to 
+% % \lipsum[1-2] % generates filler text
+% % \vfill  % Fills a vertical space
+% % \columnbreak % breaks the column so starts the next column
+% % 
+% 
+% \end{multicols}
+
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% Provides extra symbols, e.g. arrows like \textrightarrow, various currencies (\texteuro,...), things like \textcelsius and many other
 \usepackage{textcomp}
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% it defines the \url{...} command. 
+% It defines the \url{...} command. 
 \usepackage{url}
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% it improves the verbatim environment, fixing some bugs. moreover, it provides the comment environment
+% It improves the verbatim environment, fixing some bugs. Moreover, it provides the comment environment
 \usepackage{verbatim} 
 
 
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% general packages and options %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% use a numbered list but as continuous paragraph
-\usepackage{paralist}
 
-%\renewcommand{\abstractname}{resumen}
 
+
+
+%%% FIGURES AND GRAPHICS PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[]{graphicx} % manejo de graficos
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
 % allows customization of appearance and placement of captions for figures, tables, etc.
-\usepackage[font=small,labelfont=bf,margin=1.5cm]{caption} 
+\usepackage[font=normalsize,labelfont=bf]{caption} 
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
 % varias figuras en un entorno figura 
 \usepackage{subcaption}  
-% usage: this example creates 3 images with her own captions in the same figure environment
+% USAGE: This example creates 3 images with her own captions in the same figure environment
 % \begin{figure}
 %         \begin{subfigure}[b]{0.3\textwidth}
 %                 \centering
 %                 \includegraphics[width=\textwidth]{gull}
-%                 \caption{a gull}
+%                 \caption{A gull}
 %                 \label{fig:gull}
 %         \end{subfigure}%
 %         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 
@@ -263,7 +248,7 @@
 %         \begin{subfigure}[b]{0.3\textwidth}
 %                 \centering
 %                 \includegraphics[width=\textwidth]{tiger}
-%                 \caption{a tiger}
+%                 \caption{A tiger}
 %                 \label{fig:tiger}
 %         \end{subfigure}
 %         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 
@@ -271,54 +256,41 @@
 %         \begin{subfigure}[b]{0.3\textwidth}
 %                 \centering
 %                 \includegraphics[width=\textwidth]{mouse}
-%                 \caption{a mouse}
+%                 \caption{A mouse}
 %                 \label{fig:mouse}
 %         \end{subfigure}
-%         \caption{pictures of animals}\label{fig:animals}
+%         \caption{Pictures of animals}\label{fig:animals}
 % \end{figure}
 
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% the text can lie around the figure, (text wraps the figure)
+% The text can lie around the figure, (text wraps the figure)
 \usepackage{wrapfig} 
-% usage
+% USAGE
 % \begin{wrapfigure}[lineheight]{alignment}{width}
 %   \begin{center}
 %     \includegraphics[width=0.48\textwidth]{image}
 %   \end{center}
-%   \caption{an image wrapped} 
+%   \caption{An image wrapped} 
 % \end{wrapfigure}
 
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% para superponer imagenes sobre otras
+% Para superponer imagenes sobre otras
 \usepackage{overpic} 
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% captions on side of the figure
+% Captions on side of the figure
 \usepackage{sidecap}  
-%  usage
-% \begin{scfigure}
+%  USAGE
+% \begin{SCfigure}
 %   \centering
 %   \includegraphics[width=0.5\textwidth]%
-%     {giraff_picture}% picture filename
+%     {Giraff_picture}% picture filename
 %   \caption{ ... caption text ... }
-% \end{scfigure}
+% \end{SCfigure}
 
-% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% chemical structures, figures and reactions
-% To use it make chemical reaction arrows. Read the manual.
-% A \chemrel [above][below]{-> or <- or <-> or <>, color, thicknes} B \par
-% this creates A->B A<-B A<->B A <> B reaction schemes
-%
-\usepackage{chemfig}
-% Configure chemical drawings style.
-% comment the lines below to obtain the plain chemical molecules and stuff.
-\setdoublesep{0.35700 em}  % 'Bond Spacing'
-\setatomsep{1.78500 em}    % 'Fixed Length'
-\setbondoffset{0.18265 em} % 'Margin Width'
-\newcommand{\bondwidth}{0.06642 em} % 'Line Width'
-\setbondstyle{line width = \bondwidth}
+
 
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
@@ -355,12 +327,18 @@
 \usepackage{upgreek} 
 
 
+
+
+
 %%% other general packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
 % bibliography related, use natbib as bibtex engine
 \usepackage{natbib}
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -398,6 +376,12 @@
 \newcommand{\tableHead}{\hline}
 \newcommand{\tableTopLine}{\hline}
 \newcommand{\tableBottomLine}{\hline \hline}
+% Insert a horizontal line whose length is like the size of the paper and whose thickness is 0.5 mm
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% Rename abstract if needed
+% \renewcommand{\abstractname}{Executive Summary}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -408,6 +392,9 @@
 
 % equation environment define entorno ecuaciones
 \newcommand{\equa}[1]{\begin{equation}\displaystyle{#1} \end{equation}}
+
+% Equation Environment Define entorno ecuaciones
+\newcommand{\equan}[1]{\begin{equation*}\displaystyle{#1} \end{equation*}}
 
 % fraction inside a root
 \newcommand{\sfrac}[2]{\sqrt{\frac{#1}{#2}}}
@@ -452,4 +439,3 @@
 % position vector
 \newcommand{\rr}{\vec{r}}
 \newcommand{\rrtt}{\left( \vec{r},t \right)}
-
