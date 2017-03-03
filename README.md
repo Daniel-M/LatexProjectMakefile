@@ -1,9 +1,7 @@
-# LatexProjectMakefile
-##### **Daniel Mejía R.**
-##### April, 2016
-
-*Summary.*   
-This document contains the specification of `LatexProjectMakefile` with some considerations about use and
+% LatexProjectMakefile
+% **Daniel Mejía R.**
+% April, 2016
+*Summary.* This document contains the specification of `LatexProjectMakefile` with some considerations about use and
 latex source tree organization. The styles sheet `DM_Styles.sty` has several dependencies described in the
 dependencies the section [Latex package dependencies](#sec:dependencies)
 
@@ -17,7 +15,10 @@ Table of contents: Run pandoc with --toc option -->
 ## How to use this `Makefile`
 <div id="sec:makefile-how-to"></div>
 
-Look at the samples in `book_template` and `article_template` they are pretty self explanatory. 
+Look at the samples in `book_template` and `article_template` they are pretty self explanatory.  
+Basically, all you have to do is to rename the main target at the `Makefile` and change it for the name 
+of your main `.tex` file. It should work out of the box by calling `make` read more at the section
+`Makefile` special variables below.
 
 ### Latex project source tree
 <div id="subsec:latex-source-tree"></div>

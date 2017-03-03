@@ -13,7 +13,10 @@ TOC:on
 ======= How to use this `Makefile` =======
 label{sec:makefile-how-to}
 
-Look at the samples in `book_template` and `article_template` they are pretty self explanatory. 
+Look at the samples in `book_template` and `article_template` they are pretty self explanatory.  
+Basically, all you have to do is to rename the main target at the `Makefile` and change it for the name 
+of your main `.tex` file. It should work out of the box by calling `make` read more at the section
+`Makefile` special variables below.
 
 ===== Latex project source tree =====
 label{subsec:latex-source-tree}
