@@ -133,7 +133,7 @@ are the following,
  * `overpic`.         
  * `sidecap`.         
  * `chemfig`.         
- * `mathtools`.         
+ * `mathtools` a successor or `amsmath`.         
  * `amssymb`.         
  * `dsfont`.         
  * `cancel`.         
