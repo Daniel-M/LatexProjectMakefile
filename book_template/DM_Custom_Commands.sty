@@ -1,0 +1,73 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                           %%%
+%%%  DM Custom Commands version 1.0  -  2017  %%%
+%%%                                           %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{DM_Custom_Commands}
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% Styles structure
+% + Text commands
+% + Math commands
+% + Physics commands
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% Text Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\tableHead}{\hline}
+\newcommand{\tableTopLine}{\hline}
+\newcommand{\tableBottomLine}{\hline \hline}
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% Math commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% equation environment define entorno ecuaciones
+\newcommand{\equa}[1]{\begin{equation}\displaystyle{#1} \end{equation}}
+
+% fraction inside a root
+\newcommand{\sfrac}[2]{\sqrt{\frac{#1}{#2}}}
+\newcommand{\snfrac}[3]{\sqrt[#1]{\frac{#2}{#3}}}
+
+% diferential diferencial
+\newcommand{\dd}{\mathrm{d}}
+
+% total derivate - derivada total \der{x}{y} da dx/dy
+\newcommand{\der}[2]{\frac{\mathrm{d} #1 }{\mathrm{d} #2}}
+
+% n-th total derivate - derivada n-esima \dern{x}{y}{n} da d^nx/dy^n
+\newcommand{\dern}[3]{\frac{\mathrm{d}^{#3} #1 }{\mathrm{d} #2^{#3}}}
+
+% partial derivate - derivada parcial \parder{x}{y} da \parialx/\partialy
+\newcommand{\parder}[2]{\frac{\partial #1 }{\partial #2}}
+
+% n-th partial derivate - same as parder but n-th partial derivate \parial^nx/\partialy^n
+\newcommand{\pardern}[3]{\frac{\partial^{#3} #1 }{\partial #2^{#3}}}
+
+% integral a to b \integrate{f(x,y)}{a}{b}{y} da integral de f(x,y) desde a hasta b integrando en y
+\newcommand{\integrate}[4]{\int_{#2}^{#3} #1 \,\mathrm{d}#4}
+
+% sumation \sumate{i}{n}{e} da \sum_{i}^{n}e
+\newcommand{\sumate}[3]{\sum_{#1}^{#2} #3}
+
+% get into parentheses
+\newcommand{\parentesis}[1]{\left(#1\right)}
+
+% operador <<del>> es decir, el operador gradiente vectorial
+\newcommand{\del}{\vec{\nabla}}
+
+% operador <<divergencia>> es decir, el operador gradiente vectorial
+\newcommand{\divergency}{\vec{\nabla} \cdot}
+
+% operador <<rotacional>> es decir, el operador gradiente vectorial
+\newcommand{\rotational}{\vec{\nabla} \times}
+
+% operador <<laplaciano>> es decir, el operador gradiente vectorial
+\newcommand{\laplacian}{\nabla^{2} }
+
+% position vector
+\newcommand{\rr}{\vec{r}}
+\newcommand{\rrtt}{\left( \vec{r},t \right)}
+

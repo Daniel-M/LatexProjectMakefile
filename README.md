@@ -1,15 +1,9 @@
-% LatexProjectMakefile
-% **Daniel Mejía R.**
-% April, 2016
+# LatexProjectMakefile
+## **Daniel Mejía R.**
+##: April, 2016
 *Summary.* This document contains the specification of `LatexProjectMakefile` with some considerations about use and
 latex source tree organization. The styles sheet `DM_Styles.sty` has several dependencies described in the
 dependencies the section [Latex package dependencies](#sec:dependencies)
-
-
-<!-- 
-
-Table of contents: Run pandoc with --toc option -->
-
 
 
 ## How to use this `Makefile`
@@ -107,41 +101,43 @@ Calling `make` usually should be enough to build the document.
 The list of packages (or latex modules if you want to call them that way) that will be invoked by the style sheet `DM_Styles.sty`
 are the following,
 
- * `bibtex`.         
- * `nomencl`.         
- * `babel`.         
- * `inputenc`.         
- * `fontenc`.         
- * `hyperref`.         
- * `graphicx`.         
- * `float`.         
- * `layout`.         
- * `geometry`.         
- * `pdflscape`.         
- * `array`.         
- * `multirow`.         
- * `fancyhdr`.         
- * `listings`.         
- * `color`.         
- * `textcomp`.         
- * `url`.         
- * `verbatim`.         
- * `paralist`.         
- * `caption`.         
- * `subcaption`.         
- * `wrapfig`.         
- * `overpic`.         
- * `sidecap`.         
- * `chemfig`.         
- * `mathtools` a successor or `amsmath`.         
- * `amssymb`.         
- * `dsfont`.         
- * `cancel`.         
- * `esint`.         
- * `latexsym`.         
- * `upgreek`.         
- * `natbib`.         
- * `textcomp`.         
+ * `amssymb`.  
+ * `array`.  
+ * `babel`.  
+ * `cancel`.  
+ * `caption`.  
+ * `chemfig`.  
+ * `color`.  
+ * `dsfont`.  
+ * `esint`.  
+ * `fancyhdr`.  
+ * `float`.  
+ * `fontenc`.  
+ * `geometry`.  
+ * `graphicx`.  
+ * `hyperref`.  
+ * `hyphenat`.  
+ * `inputenc`.  
+ * `latexsym`.  
+ * `layout`.  
+ * `lipsum`.  
+ * `listings`.  
+ * `mathtools`.  
+ * `multicol`.  
+ * `multirow`.  
+ * `natbib`.  
+ * `nomencl`.  
+ * `overpic`.  
+ * `paralist`.  
+ * `pdflscape`.  
+ * `sidecap`.  
+ * `subcaption`.  
+ * `textcomp`.  
+ * `upgreek`.  
+ * `upgreek`.  
+ * `url`.  
+ * `verbatim`.  
+ * `wrapfig`.  
 
 In GNU/Linux Debian you can install the prerequisites by executing the following command as superuser,  
 
