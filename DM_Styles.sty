@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                  %%%
-%%%  DM Styles version 3.5  -  2016  %%%
+%%%  DM Styles version 4.0  -  2017  %%%
 %%%                                  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % NOTES ON COMPILING
@@ -11,66 +11,36 @@
 \ProvidesPackage{DM_Styles}
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% You will see the label just next or above the relevant number in the compiled version.
-% Just before the final version, remove it
-%\usepackage{showkeys} 
+% Styles structure
+% + Document Layout and style
+% + Language and encoding
+% + Symbols and fonts 
+% + Document environment commands and renewcommands
+% + Image and figure
+% + Table
+% + Math
+% + Physics
+% + Chemistry
+% + Source code
+% + References and Bibliography
+% + Utility packages 
+% + Custom commands
+% + 
 
-% the default font set to sans serif (easy readable)
-%\renewcommand*{\familydefault}{\sfdefault}
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% To create the list of symbols used
-\usepackage{nomencl}
-\renewcommand{\nomname}{List of symbols and abreviations}
+% DOCUMENT LAYOUT AND STYLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Definition environment 
-\newtheorem{definition}{Definition}
-
-% Remark environment
-\newenvironment{remark}{\noindent\textbf{Remark}\newline\noindent}{\newline}
-\newenvironment{remarks}{\noindent\textbf{Remarks}\begin{itemize}}{\end{itemize}}
-
-% Needed for the custom title. Remove if not used.
-%\usepackage[charter]{mathdesign}
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Language definition and hypenation setup  %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage[spanish]{babel}
-\usepackage[spanish,english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-%\usepackage{hyphenation}
-
-
-\usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{float} % this enables the ``H'' option to force figures to stay at the place where they where declared
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Section numbering depth for Table of Contents %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%
+% Section numbering depth for Table of Contents %%
 % Section numbering depth. Left as default = 2
 \setcounter{secnumdepth}{2}
-
 % The depth of table of contents. Left as default = 3
 \setcounter{tocdepth}{3}
 
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Page margins and document layout of pages %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Shows the document frames
-%\usepackage{showframe}
-
-% Creates a page with layout definitions when \layout{} is invoqued 
-\usepackage{layout}
-
-% custom margins modified by package
+%%%%%
+% Custom margins modified by package
 \usepackage{geometry}
 \geometry{
   letterpaper,
@@ -80,46 +50,16 @@
   bottom=2cm,
 }
 
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Rotate tables to landscape mode in text %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This package requires the use of package `geometry`
-\usepackage{pdflscape}
-% An example of usage is
-%\newgeometry{margin=1cm} % modify this if you need even more space
-%\begin{landscape}
-
-  %put your table here
-
-%\end{landscape}
-%\restoregeometry
+%%%%%
+\usepackage{color}  % it adds support for colored text.
+ 
+% \definecolor{dkgreen}{rgb}{0,0.6,0}
+% \definecolor{gray}{rgb}{0.5,0.5,0.5}
+% \definecolor{mauve}{rgb}{0.58,0,0.82}
+%
 
 
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Sets the leghts on tables and arrays %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{array}
-
-%%
-%% Adding multiple rows in latex tables
-%% -----------------------------
-%% | this       | is | a table |
-%% -----------------------------
-%% | this spans | 1  | 3	   |
-%% -            ----------------
-%% | two rows   | 2  | 4	   |
-%% -----------------------------
-%% | one row    | 5  | 6	   |
-%% -----------------------------
-%%
-\usepackage{multirow}
-
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+%%%%%
 \usepackage{fancyhdr} % to change header and footer of any page of the document.
 
 %\newcommand{\changefont}{%
@@ -162,13 +102,274 @@
 % 2	\renewcommand{\footrulewidth}{0.4pt}
 
 
+%%%%%
+% Creates a page with layout definitions when \layout{} is invoked 
+\usepackage{layout}
+
+%%%%%
+% To create the list of symbols used
+\usepackage{nomencl}
+
+%%%%%
+% use a numbered list but as continuous paragraph
+\usepackage{paralist}
+
+
+
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% LANGUAGE AND ENCODING 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%
+\usepackage[spanish,english]{babel}
+
+%%%%%
+\usepackage[T1]{fontenc}
+
+%%%%%
+\usepackage{hyphenation}
+
+%%%%%
+\usepackage[utf8]{inputenc}
+
+%%%%%
+% The hyperref package is used to handle cross-referencing commands in LaTeX to produce hypertext links in the document
+\usepackage{hyperref}
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% SYMBOLS AND FONTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%
+% Provides extra symbols, e.g. arrows like \textrightarrow, various currencies (\texteuro,...), things like \textcelsius and many other
+\usepackage{textcomp}
+
+%%%%%
+%  Upright Greek letters. A package to provide the upright Greek letters from the Euler or Adobe Symbol fonts as additional math symbols
+\usepackage{upgreek}
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% DOCUMENT ENVIRONMENT COMMANDS
+
+%%%%%
+% Cite with author,date format with package natbib
+\renewcommand{\cite}[1]{\citep{#1}}
+
+%%%%%
+% Name of the symbol section with package nomencl
+\renewcommand{\nomname}{List of symbols and abreviations}
+
+%%%%%
+% the default font set to sans serif (easy readable)
+%\renewcommand*{\familydefault}{\sfdefault}
+
+%%%%%
+% Rename abstract if needed
+% \renewcommand{\abstractname}{executive summary}
+
+%%%%%
+% Definition environment 
+\newtheorem{definition}{Definition}
+
+%%%%%
+% Remark environment
+\newenvironment{remark}{\noindent\textbf{Remark}\newline\noindent}{\newline}
+\newenvironment{remarks}{\noindent\textbf{Remarks}\begin{itemize}}{\end{itemize}}
+
+
+%%%%%
+%  Multiple columns
+\usepackage{multicol}
+% % Usage 
+% 
+% \begin{multicols}{ number of columns }
+% 
+% % these lines are optional and function to 
+% % \lipsum[1-2] % generates filler text
+% % \vfill  % Fills a vertical space
+% % \columnbreak % breaks the column so starts the next column
+% % 
+% 
+% \end{multicols}
+
+
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% IMAGE AND FIGURE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%
+% Allows customization of appearance and placement of captions for figures, tables, etc.
+\usepackage[font=small,labelfont=bf,margin=1.5cm]{caption} 
+%[font=normalsize,labelfont=bf] 
+%[font=small,labelfont=bf,margin=1.5cm] 
+
+
+%%%%%
+\usepackage{float} % this enables the ``H'' option to force figures to stay at the place where they where declared
+
+%%%%%
+\usepackage{graphicx}
+
+%%%%%
+% Overimpose pictures
+\usepackage{overpic} 
+
+%%%%%
+% captions on side of the figure
+\usepackage{sidecap}  
+%  usage
+% \begin{scfigure}
+%   \centering
+%   \includegraphics[width=0.5\textwidth]%
+%     {giraff_picture}% picture filename
+%   \caption{ ... caption text ... }
+% \end{scfigure}
+
+
+%%%%%
+% varias figuras en un entorno figura 
+\usepackage{subcaption}  
+% usage: this example creates 3 images with her own captions in the same figure environment
+% \begin{figure}
+%         \begin{subfigure}[b]{0.3\textwidth}
+%                 \centering
+%                 \includegraphics[width=\textwidth]{gull}
+%                 \caption{a gull}
+%                 \label{fig:gull}
+%         \end{subfigure}%
+%         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 
+%           %(or a blank line to force the subfigure onto a new line)
+%         \begin{subfigure}[b]{0.3\textwidth}
+%                 \centering
+%                 \includegraphics[width=\textwidth]{tiger}
+%                 \caption{a tiger}
+%                 \label{fig:tiger}
+%         \end{subfigure}
+%         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 
+%           %(or a blank line to force the subfigure onto a new line)
+%         \begin{subfigure}[b]{0.3\textwidth}
+%                 \centering
+%                 \includegraphics[width=\textwidth]{mouse}
+%                 \caption{a mouse}
+%                 \label{fig:mouse}
+%         \end{subfigure}
+%         \caption{pictures of animals}\label{fig:animals}
+% \end{figure}
+
+%%%%%
+% The text can lie around the figure, (text wraps the figure)
+\usepackage{wrapfig} 
+% usage
+% \begin{wrapfigure}[lineheight]{alignment}{width}
+%   \begin{center}
+%     \includegraphics[width=0.48\textwidth]{image}
+%   \end{center}
+%   \caption{an image wrapped} 
+% \end{wrapfigure}
+
+
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% TABLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%
+% Adding multiple rows in latex tables
+% -----------------------------
+% | this       | is | a table |
+% -----------------------------
+% | this spans | 1  | 3	   |
+% -            ----------------
+% | two rows   | 2  | 4	   |
+% -----------------------------
+% | one row    | 5  | 6	   |
+% -----------------------------
+\usepackage{multirow}
+
+%%%%%
+% Rotate tables to landscape mode in text %%
+% This package requires the use of package `geometry`
+\usepackage{pdflscape}
+% An example of usage is
+%\newgeometry{margin=1cm} % modify this if you need even more space
+%\begin{landscape}
+
+  %put your table here
+
+%\end{landscape}
+%\restoregeometry
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% MATH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%
+% Adds more mathematical symbols
+\usepackage{amssymb} 
+
+%%%%%
+\usepackage{array}
+
+%%%%%
+% Provides commands for striking out mathematical expressions
+\usepackage{cancel}  
+% the syntax is
+% \cancel{x}
+% 
+% or
+% 
+% \cancelto{0}{x}
+
+%%%%%
+\usepackage{dsfont} 
+
+%%%%%
+% Adds additional integral symbols, for integrals over squares, clockwise integrals over sets, etc.
+\usepackage{esint}  
+
+%%%%%
+\usepackage{latexsym} 
+
+%%%%%
+% It contains the advanced math extensions for latex
+%\usepackage{amsmath}
+% mathtools includes amsmath
+\usepackage{mathtools}
+
+%%%%%
+\usepackage{upgreek} 
+
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% PHYSICS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% CHEMISTRY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%
+% chemical structures, figures and reactions
+% To use it make chemical reaction arrows. Read the manual.
+% A \chemrel [above][below]{-> or <- or <-> or <>, color, thicknes} B \par
+% this creates A->B A<-B A<->B A <> B reaction schemes
+%
+\usepackage{chemfig}
+% Configure chemical drawings style.
+% comment the lines below to obtain the plain chemical molecules and stuff.
+\setdoublesep{0.35700 em}  % 'Bond Spacing'
+\setatomsep{1.78500 em}    % 'Fixed Length'
+\setbondoffset{0.18265 em} % 'Margin Width'
+\newcommand{\bondwidth}{0.06642 em} % 'Line Width'
+\setbondstyle{line width = \bondwidth}
+
+
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% SOURCE CODE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{listings} % source code on the text
-\usepackage{color}  % it adds support for colored text.
- 
-% \definecolor{dkgreen}{rgb}{0,0.6,0}
-% \definecolor{gray}{rgb}{0.5,0.5,0.5}
-% \definecolor{mauve}{rgb}{0.58,0,0.82}
 % 
 % usage of listings and color
 
@@ -219,237 +420,35 @@
 %   morekeywords={*,...}               % if you want to add more keywords to the set
 % }
 
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% provides extra symbols, e.g. arrows like \textrightarrow, various currencies (\texteuro,...), things like \textcelsius and many other
-\usepackage{textcomp}
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% it defines the \url{...} command. 
+%%%%%
+% It defines the \url{...} command. 
 \usepackage{url}
 
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% it improves the verbatim environment, fixing some bugs. moreover, it provides the comment environment
+%%%%%
+% It improves the verbatim environment, fixing some bugs. moreover, it provides the comment environment
 \usepackage{verbatim} 
 
 
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% general packages and options %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% use a numbered list but as continuous paragraph
-\usepackage{paralist}
-
-%\renewcommand{\abstractname}{resumen}
-
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% allows customization of appearance and placement of captions for figures, tables, etc.
-\usepackage[font=small,labelfont=bf,margin=1.5cm]{caption} 
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% varias figuras en un entorno figura 
-\usepackage{subcaption}  
-% usage: this example creates 3 images with her own captions in the same figure environment
-% \begin{figure}
-%         \begin{subfigure}[b]{0.3\textwidth}
-%                 \centering
-%                 \includegraphics[width=\textwidth]{gull}
-%                 \caption{a gull}
-%                 \label{fig:gull}
-%         \end{subfigure}%
-%         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 
-%           %(or a blank line to force the subfigure onto a new line)
-%         \begin{subfigure}[b]{0.3\textwidth}
-%                 \centering
-%                 \includegraphics[width=\textwidth]{tiger}
-%                 \caption{a tiger}
-%                 \label{fig:tiger}
-%         \end{subfigure}
-%         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc. 
-%           %(or a blank line to force the subfigure onto a new line)
-%         \begin{subfigure}[b]{0.3\textwidth}
-%                 \centering
-%                 \includegraphics[width=\textwidth]{mouse}
-%                 \caption{a mouse}
-%                 \label{fig:mouse}
-%         \end{subfigure}
-%         \caption{pictures of animals}\label{fig:animals}
-% \end{figure}
-
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% the text can lie around the figure, (text wraps the figure)
-\usepackage{wrapfig} 
-% usage
-% \begin{wrapfigure}[lineheight]{alignment}{width}
-%   \begin{center}
-%     \includegraphics[width=0.48\textwidth]{image}
-%   \end{center}
-%   \caption{an image wrapped} 
-% \end{wrapfigure}
-
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% para superponer imagenes sobre otras
-\usepackage{overpic} 
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% captions on side of the figure
-\usepackage{sidecap}  
-%  usage
-% \begin{scfigure}
-%   \centering
-%   \includegraphics[width=0.5\textwidth]%
-%     {giraff_picture}% picture filename
-%   \caption{ ... caption text ... }
-% \end{scfigure}
-
-% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% chemical structures, figures and reactions
-% To use it make chemical reaction arrows. Read the manual.
-% A \chemrel [above][below]{-> or <- or <-> or <>, color, thicknes} B \par
-% this creates A->B A<-B A<->B A <> B reaction schemes
-%
-\usepackage{chemfig}
-% Configure chemical drawings style.
-% comment the lines below to obtain the plain chemical molecules and stuff.
-\setdoublesep{0.35700 em}  % 'Bond Spacing'
-\setatomsep{1.78500 em}    % 'Fixed Length'
-\setbondoffset{0.18265 em} % 'Margin Width'
-\newcommand{\bondwidth}{0.06642 em} % 'Line Width'
-\setbondstyle{line width = \bondwidth}
-
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%% math related packages
+% REFERENCES AND BIBLIOGRAPHY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% it contains the advanced math extensions for latex
-%\usepackage{amsmath}
-% mathtools includes amsmath
-\usepackage{mathtools}
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% adds more mathematical symbols
-\usepackage{amssymb} 
-\usepackage{dsfont} 
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% provides commands for striking out mathematical expressions
-\usepackage{cancel}  
-% the syntax is
-% \cancel{x}
-% 
-% or
-% 
-% \cancelto{0}{x}
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% adds additional integral symbols, for integrals over squares, clockwise integrals over sets, etc.
-\usepackage{esint}  
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-% other mathematical symbols
-\usepackage{latexsym} 
-\usepackage{upgreek} 
-
-
-%%% other general packages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+%%%%%
 % bibliography related, use natbib as bibtex engine
 \usepackage{natbib}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%                     custom commands                     %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% style commands
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\renewcommand{\cite}[1]{\citep{#1}}
-
-% insert a horizontal line whose length is like the size of the paper and whose thickness is 0.5 mm
-%\newcommand{\hrule}{\rule{\linewidth}{0.5mm}}
-
-% rename abstract if needed
-% \renewcommand{\abstractname}{executive summary}
 %% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% font related packages and definitions %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UTILITY PACKAGES 
+% Fills text with Lorem Ipsum..
+\usepackage{lipsum}
 
-% for make some special characters available
-\usepackage{textcomp}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Text Commands
+%% == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
+% CUSTOM COMMANDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%
+% Import custom commands style sheet
+\usepackage{DM_Custom_Commands}
 
-\newcommand{\tableHead}{\hline}
-\newcommand{\tableTopLine}{\hline}
-\newcommand{\tableBottomLine}{\hline \hline}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Math commands
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% equation environment define entorno ecuaciones
-\newcommand{\equa}[1]{\begin{equation}\displaystyle{#1} \end{equation}}
-
-% fraction inside a root
-\newcommand{\sfrac}[2]{\sqrt{\frac{#1}{#2}}}
-\newcommand{\snfrac}[3]{\sqrt[#1]{\frac{#2}{#3}}}
-
-% diferential diferencial
-\newcommand{\dd}{\mathrm{d}}
-
-% total derivate - derivada total \der{x}{y} da dx/dy
-\newcommand{\der}[2]{\frac{\mathrm{d} #1 }{\mathrm{d} #2}}
-
-% n-th total derivate - derivada n-esima \dern{x}{y}{n} da d^nx/dy^n
-\newcommand{\dern}[3]{\frac{\mathrm{d}^{#3} #1 }{\mathrm{d} #2^{#3}}}
-
-% partial derivate - derivada parcial \parder{x}{y} da \parialx/\partialy
-\newcommand{\parder}[2]{\frac{\partial #1 }{\partial #2}}
-
-% n-th partial derivate - same as parder but n-th partial derivate \parial^nx/\partialy^n
-\newcommand{\pardern}[3]{\frac{\partial^{#3} #1 }{\partial #2^{#3}}}
-
-% integral a to b \integrate{f(x,y)}{a}{b}{y} da integral de f(x,y) desde a hasta b integrando en y
-\newcommand{\integrate}[4]{\int_{#2}^{#3} #1 \,\mathrm{d}#4}
-
-% sumation \sumate{i}{n}{e} da \sum_{i}^{n}e
-\newcommand{\sumate}[3]{\sum_{#1}^{#2} #3}
-
-% get into parentheses
-\newcommand{\parentesis}[1]{\left(#1\right)}
-
-% operador <<del>> es decir, el operador gradiente vectorial
-\newcommand{\del}{\vec{\nabla}}
-
-% operador <<divergencia>> es decir, el operador gradiente vectorial
-\newcommand{\divergency}{\vec{\nabla} \cdot}
-
-% operador <<rotacional>> es decir, el operador gradiente vectorial
-\newcommand{\rotational}{\vec{\nabla} \times}
-
-% operador <<laplaciano>> es decir, el operador gradiente vectorial
-\newcommand{\laplacian}{\nabla^{2} }
-
-% position vector
-\newcommand{\rr}{\vec{r}}
-\newcommand{\rrtt}{\left( \vec{r},t \right)}
 
