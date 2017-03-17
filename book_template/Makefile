@@ -11,7 +11,7 @@
 PROJECT = sample_book
 
 # Style file or list of files
-STYFILE = DM_Styles.sty
+STYFILE = DM_Styles.sty DM_Custom_Commands.sty
 
 ## Directories to search for sources
 

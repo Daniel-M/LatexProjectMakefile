@@ -1,5 +1,5 @@
 ###############################################
-### LATEX MAKEFILE V 3.0 - Daniel M.R. 2016 ###
+### LATEX MAKEFILE V 3.5 - Daniel M.R. 2017 ###
 ###############################################
 
 
@@ -11,7 +11,7 @@
 PROJECT = sample_document 
 
 # Style file or list of files
-STYFILE = DM_Styles.sty
+STYFILE = DM_Styles.sty DM_Custom_Commands.sty
 
 ## Directories to search for sources
 
